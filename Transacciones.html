@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Switch BackOffice</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./content/css/customCSS.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vuetify@2.2.1/dist/vuetify.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue-loading-overlay@3/dist/vue-loading.css">
+
+
+    <!-- LIBRERIAS EXTERNAS -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.2.1/dist/vuetify.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-loading-overlay@3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/babel-polyfill/dist/polyfill.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div>
+
+        <div id="testNav" v-html="HTMLcontent"></div>
+
+        <!--BODY-->
+        <div id="transacciones" class="col-lg-12 mt-4">
+
+            <v-alert id="idAlertas" v-if="alert" class="bg-success text-light" type="success">
+                <div class="col-lg-12 row noPadding">
+                    <div class="col-lg-10 noPadding" style="padding-left: 20px !important">Datos Actualizados</div>
+                    <div class="col-lg-2 noPadding text-right"><button id="btnTest" @click="closeAlert"><i
+                                class="fa fa-times"></i></button>
+                    </div>
+                </div>
+            </v-alert>
+
+            <div class="container mb-3">
+                <div class="row">
+                    <div class="input-group">
+                        <div class="col-lg-4"></div>
+                        <div class="col-lg-4">
+                            <form @submit.prevent="buscarCliente">
+                                <div id="ddTienda" v-html="HTMLcontent"></div>
+                                <!--componente.js-->
+                            </form>
+                        </div>
+                        <div class="col-lg-4"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card border-bg-blue">
+                <div class="card-header text-center bg-blue text-light resumenCantidadTitulo">
+                    <div class="row col-lg-12 noPadding">
+                        <div class="col-lg-4 noPadding"></div>
+                        <div class="col-lg-4 noPadding">Transacciones</div>
+                        <div class="col-lg-4 row noPadding">
+                            <div class="col-lg-10 noPadding"></div>
+                            <div class="col-lg-2 noPadding">
+                                <button class="btn-block" @click="actualizarTiendaIntervalo">
+                                    <i id="btnRefresh" class="fa fa-refresh noPadding"></i></button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body noPadding">
+                    <v-app id="inspire">
+                        <v-data-table :headers="headers" :loading="loading"
+                            loading-text="Cargando Datos... Porfavor Espere." :hide-default-footer="false"
+                            :items="datos_clientes" class="elevation-1">
+                        </v-data-table>
+                    </v-app>
+                    <div class="col-lg-12 noPadding row" hidden>
+                        <div class="col-lg-11"></div>
+                        <div class="col-lg-1">
+                            <button class="btn-excel btn btn-success noPadding btn-block" @click="descargarExcel"><i
+                                    class="fa fa-file-excel-o "></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><br>
+
+
+        <!--BODY-->
+        <div id="version" class="text-center" v-html="HTMLcontent"></div>
+    </div>
+    <script>
+        function disableF5(e) {
+            if ((e.which || e.keyCode) == 116)
+                e.preventDefault();
+        };
+        $(document).on("keydown", disableF5);
+    </script>
+    <script src="./js/version.js"></script>
+    <script src="./js/componentes.js"></script>
+    <script src="./js/transacciones.js"></script>
+    <script src="./js/filtros.js?=1"></script>
+
+</body>
+
+</html>

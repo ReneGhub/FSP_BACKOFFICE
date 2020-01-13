@@ -1,0 +1,248 @@
+[v-cloak] {
+  display: none;
+}
+
+body {
+  background-color: #efebeb !important;
+}
+/* vtable */
+.v-data-table td {
+  font-size: 12px !important;
+  padding: 0px 5px 0px 5px !important;
+}
+.v-data-table th {
+  font-size: 12px !important;
+  padding: 0px 5px 0px 5px !important;
+}
+.v-application--wrap {
+  min-height: 100% !important;
+}
+.v-data-footer__select {
+  /*row per page escondido*/
+  display: none !important;
+}
+/* vtable */
+/*turn off spinners de los numeros ( arriba abajo)*/
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/*turn off spinners de los numeros ( arriba abajo)*/
+/*SCROLLBAR*/
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #00000059;
+  border-radius: 2px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #bfb1b1;
+  border-radius: 2px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #271e195c;
+}
+/*SCROLLBAR*/
+.customSelect {
+  border-radius: 30px;
+}
+.bg-darkBlue {
+  background-color: #013569;
+}
+.bg-blue {
+  background-color: #0e539c !important;
+}
+.border-bg-blue {
+  border: 1px solid #0e539c !important;
+}
+.customHover:hover {
+  background-color: #00000061;
+}
+.bottomBorder {
+  border-bottom: 2px solid #000000c4;
+}
+.btn-outline-blue {
+  color: #0e539c !important;
+  border-color: #0e539c !important;
+}
+.btn-outline-blue:hover {
+  background-color: #0e539c !important;
+  border-color: #0e539c !important;
+  color: white !important;
+}
+.liActive {
+  border: 1px solid #00050a;
+  background-color: #ffffff33;
+  border-radius: 27px;
+}
+button.page-link {
+  display: inline-block;
+}
+button.page-link {
+  font-size: 20px;
+  color: #29b3ed;
+  font-weight: 500;
+}
+.offset {
+  width: 500px !important;
+  margin: 20px auto;
+}
+
+.titleTabla {
+  font-size: 11px;
+}
+.noPadding {
+  padding: 0px !important;
+}
+.divResumenes {
+  padding: 0px 100px 0px 100px;
+}
+
+.divResumenesCards {
+  padding: 0px 60px 0px 60px;
+}
+
+.card .resumenCantidadTitulo {
+  padding: 0px;
+  font-size: 15px;
+}
+.card .cardBodyTotal {
+  padding: 0px;
+}
+.card .labelTotal {
+  border-top-left-radius: 11px;
+  border-bottom-left-radius: 11px;
+}
+.card .dataTotal {
+  border: 1px solid #00000073;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: #f8f9fa;
+}
+.datosTabla:hover {
+  background-color: #00000012;
+}
+
+.divResumenesCards .resumenCantidadVentas {
+  padding: 15px;
+  font-size: 44px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.dataTabla {
+  font-size: 11px;
+}
+.boxShadow {
+  border: 0px;
+  box-shadow: 3px 3px 15px #0000006e;
+}
+.boxShadow .card-header {
+  border: 1px solid #0d65c3;
+}
+.bloque {
+  width: 100px;
+  height: 200px;
+}
+.fade-enter-active,
+.fade2-leave-active {
+  transition: 1s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade2-enter-active,
+.fade2-leave-active {
+  transition: 0.5s;
+}
+
+.fade2-enter,
+.fade2-leave-to {
+  height: 0px;
+}
+.ml-6 {
+  margin-left: 4rem !important;
+}
+.panTitle {
+  background-color: #17a2b8;
+  color: white;
+  border-radius: 5px;
+  padding: 0px 0px 0px 38px;
+}
+.border-radius10px {
+  border-radius: 10px !important;
+}
+/*font-sizers*/
+.fontSize11px {
+  font-size: 11px !important;
+}
+/*font-sizers*/
+/*inputFields*/
+.inputFieldCustom-title {
+  border-top-left-radius: 10px !important;
+  border-bottom-left-radius: 10px !important;
+  width: 60px;
+  padding: 0px 0px 0px 23px;
+}
+.inputFieldCustom-input {
+  border-top-right-radius: 10px !important;
+  border-bottom-right-radius: 10px !important;
+}
+
+.inputFieldCustom-input:focus {
+  color: #495057;
+  background-color: #fff;
+  border: 0px;
+  border-bottom: 1px solid #0e539c;
+  outline: 0;
+  border-radius: 0px !important;
+  box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+}
+
+/*inputFields*/
+.dataTitlePan {
+  background-color: #00246b;
+  color: white;
+  border-radius: 0px 0px 0px 0px;
+}
+.dataTitlePan .card-title {
+  padding: 3px 0px 0px 31px;
+}
+.dataPan {
+  background-color: white;
+  border-radius: 0px 0px 0px 0px;
+}
+.dataPan .card-text {
+  padding: 5px 0px 0px 15px;
+}
+.bg-fashionsPark {
+  background-color: #0e539c;
+  padding: 0px;
+}
+.bg-fashionsPark .dropdown-menu {
+  left: -92px !important;
+}
+
+.border-success {
+  border: 2px solid #28a745 !important;
+}
+.border-blue {
+  border: 2px solid #0e539c !important;
+}
+.border-danger {
+  border: 2px solid #dc3545 !important;
+}
+.btn-excel {
+  color: white;
+}

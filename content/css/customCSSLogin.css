@@ -1,0 +1,40 @@
+html,
+body {
+  height: 100% !important;
+  background-repeat: no-repeat !important;
+  background-image: linear-gradient(
+    rgb(136, 136, 136),
+    rgb(255, 255, 255)
+  ) !important;
+}
+.cardLogin {
+  padding: 8% 35% 0px 35% !important;
+}
+.cardLogin .card {
+  border-radius: 12px;
+  box-shadow: 3px 3px 10px;
+  background-color: #bed2cb !important;
+}
+.cardLogin .form-control {
+  background-color: #ffffff70 !important;
+}
+.cardLogin .card-body {
+  height: 100% !important;
+}
+.cardLogin .loginInput {
+  padding: 0% 10% 0% 10%;
+}
+.cardLogin .loginLogo {
+  width: 150px;
+  margin: 0px 0px 0px 30%;
+}
+.cardLogin .btnLogin {
+  color: #fff;
+  background-color: #033e1e;
+  border-color: #033e1e;
+}
+
+.btnLogin:hover {
+  background-color: #033e1ed4;
+  border-color: #033e1e;
+}

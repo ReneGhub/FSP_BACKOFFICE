@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Switch backoffice</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <link rel="stylesheet" href="./content/css/customCSS.css">
+    <!-- LIBRERIAS EXTERNAS -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <div>
+        <div id="testNav" v-html="HTMLcontent"></div>
+        <!--BODY-->
+        <div id="app">
+            <!-- BUSCADOR CLIENTES -->
+            <transition name="fade2" mode="out-in">
+                <div class="col-lg-12 offset-lg-3 bloque" v-if="!(rut_cliente == datos_cliente.rut)"></div>
+            </transition>
+            <div class="container mt-4 mb-3">
+                <div class="row justify-content-center">
+                    <form @submit.prevent="buscarCliente">
+                        <!--<span class="panTitle">Ingrese rut sin digito verificador</span>
+                        <div class="form-inline">
+                            <div class="input-group">
+                                <input id="inputPan" class="form-control form-control-lg" type="number"
+                                    placeholder="Ej: 19852321" style="border-top-left-radius: 0px;"
+                                    v-model:value="rut_cliente">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-info btn-lg">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>-->
+                        <div class="bg-info divPan" style="border-radius: 7px;">
+                            <span class=" panTitle">Ingrese rut sin digito verificador</span>
+                            <div class="form-inline">
+                                <div class="input-group">
+                                    <input id="inputPan" class="form-control form-control-lg" type="number"
+                                        placeholder="Ej: 19852321" style="border-top-left-radius: 0px;"
+                                        v-model:value="rut_cliente">
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-info btn-lg">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- DATOS CLIENTE -->
+            <div class="row">
+
+                <div class="col-md-12 col-lg-6 offset-lg-3">
+
+                    <div v-cloak v-if="datos_cliente.pan == 00000" class="container" key="noexiste">
+                        <div class="row justify-content-center">
+                            <p>Cliente no existe.</p>
+                        </div>
+                    </div>
+                    <div v-cloak v-if="rut_cliente == datos_cliente.rut" class="container">
+
+
+                        <div class="col-lg-12" style="display: flex; margin-bottom: 5px;">
+                            <div class="col-lg-12 dataTitlePan">
+                                <h5 class="card-title text-center">Datos Clientes</h5>
+                            </div>
+
+
+
+
+                        </div>
+                        <div class="col-lg-12" style="display: flex; margin-bottom: 5px;">
+                            <div class="col-lg-4 dataTitlePan">
+                                <h5 class="card-title">Nombre</h5>
+                            </div>
+
+                            <div class="col-lg-8 dataPan">
+                                <p class="card-text">{{ datos_cliente.nombre_cliente }}</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12" style="display: flex; margin-bottom: 5px;">
+                            <div class="col-lg-4 dataTitlePan">
+                                <h5 class="card-title">Rut</h5>
+                            </div>
+                            <div class="col-lg-8 dataPan">
+                                <p class="card-text">{{ datos_cliente.rut}}-{{ datos_cliente.dv }}</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12" style="display: flex; margin-bottom: 5px;">
+                            <div class="col-lg-4 dataTitlePan">
+                                <h5 class="card-title">PAN</h5>
+                            </div>
+
+                            <div class="col-lg-8 dataPan">
+                                <p class="card-text">{{ datos_cliente.pan }}</p>
+                                <form @submit.prevent="actualizarCliente" @keyup.esc="cambiarModoEdicion">
+                                    <button v-if=" !editando" @click="cambiarModoEdicion" type="button"
+                                        class="btn btn-primary">Editar PAN</button>
+                                    <div class="input-group">
+                                        <input v-if="editando" v-model:value="nuevo_pan"
+                                            class="form-control form-control-md" type="number"
+                                            placeholder="Ingrese el nuevo pan">
+                                        <div class="input-group-append">
+                                            <button v-if="editando" @click="actualizarCliente" type="button"
+                                                class="btn btn-success">Confimar</button>
+                                            <button v-if="editando" @click="cambiarModoEdicion" type="button"
+                                                class="btn btn-danger">Cancelar</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12" style="display: flex; margin-bottom: 5px;">
+
+                            <div class="col-lg-4 dataTitlePan">
+                                <h5 class="card-title ">Tipo de tarjeta</h5>
+                            </div>
+                            <div class="col-lg-8 dataPan">
+                                <p v-text="datos_cliente.tipo_tarjeta" class="card-text"></p>
+                            </div>
+                        </div>
+
+                        <!-- <div class="card-footer text-muted">
+                                            Ultima modificacion: 22 Diciembre 2019
+                                        </div> -->
+                    </div>
+                </div>
+                </transition>
+            </div>
+        </div>
+    </div>
+    <!--BODY-->
+    <div id="version" class="text-center" v-html="HTMLcontent"></div>
+    </div>
+    <script src="./js/version.js"></script>
+    <script src="./js/pan.js"></script>
+    <script src="./js/componentes.js"></script>
+</body>
+
+</html>
